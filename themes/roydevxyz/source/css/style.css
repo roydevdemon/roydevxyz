@@ -1,0 +1,1227 @@
+/* ========================================
+   RoyDevXyz Terminal Theme Styles
+   ======================================== */
+
+/* Reset & Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Light Mode (Default) */
+:root {
+  --terminal-bg: #f5f5f5;
+  --terminal-window: #ffffff;
+  --terminal-border: #d4d4d4;
+  --terminal-text: #2d2d2d;
+  --terminal-text-secondary: #666666;
+  --terminal-accent: #0066cc;
+  --terminal-accent-hover: #0052a3;
+  --terminal-green: #00aa00;
+  --terminal-red: #cc0000;
+  --terminal-yellow: #ccaa00;
+  --terminal-blue: #0066cc;
+  --terminal-header: #e8e8e8;
+  --terminal-shadow: rgba(0, 0, 0, 0.1);
+  --terminal-prompt: #666666;
+  --code-bg: #f0f0f0;
+  --selection-bg: rgba(0, 102, 204, 0.2);
+}
+
+/* Dark Mode (Auto-detected) */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --terminal-bg: #0a0e14;
+    --terminal-window: #1a1f29;
+    --terminal-border: #2d3748;
+    --terminal-text: #e6e6e6;
+    --terminal-text-secondary: #a0a0a0;
+    --terminal-accent: #00d9ff;
+    --terminal-accent-hover: #00b8d9;
+    --terminal-green: #00ff00;
+    --terminal-red: #ff6b6b;
+    --terminal-yellow: #ffd93d;
+    --terminal-blue: #00d9ff;
+    --terminal-header: #0f1419;
+    --terminal-shadow: rgba(0, 0, 0, 0.5);
+    --terminal-prompt: #00d9ff;
+    --code-bg: #0f1419;
+    --selection-bg: rgba(0, 217, 255, 0.2);
+  }
+}
+
+body {
+  font-family: 'SF Mono', 'Monaco', 'Cascadia Code', 'Roboto Mono', 'Fira Code', 'Consolas', monospace;
+  line-height: 1.6;
+  color: var(--terminal-text);
+  background-color: var(--terminal-bg);
+  font-size: 14px;
+  padding-top: 32px;
+  padding-bottom: 28px;
+}
+
+::selection {
+  background-color: var(--selection-bg);
+}
+
+/* ========================================
+   Terminal Window Container
+   ======================================== */
+.container {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+a {
+  color: var(--terminal-accent);
+  text-decoration: none;
+  transition: all 0.2s ease;
+  border-bottom: 1px dotted transparent;
+}
+
+a:hover {
+  color: var(--terminal-accent-hover);
+  border-bottom-color: var(--terminal-accent-hover);
+}
+
+/* ========================================
+   Terminal Header (Window Chrome)
+   ======================================== */
+.site-header {
+  background-color: var(--terminal-header);
+  padding: 0;
+  overflow: visible;
+  box-shadow: 0 2px 10px var(--terminal-shadow);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.terminal-titlebar {
+  background: var(--terminal-header);
+  padding: 10px 15px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 1px solid var(--terminal-border);
+}
+
+.terminal-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.terminal-button {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.terminal-button.close {
+  background-color: #ff5f56;
+}
+
+.terminal-button.minimize {
+  background-color: #ffbd2e;
+}
+
+.terminal-button.maximize {
+  background-color: #27c93f;
+}
+
+.terminal-title {
+  color: var(--terminal-text-secondary);
+  font-size: 12px;
+  margin-left: 10px;
+}
+
+/* Mac Menu Bar - Language Switcher */
+.mac-menubar .language-switcher {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.mac-menubar .lang-link {
+  color: var(--terminal-text);
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  transition: background-color 0.15s ease;
+  border: none;
+}
+
+.mac-menubar .lang-link:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+  border-bottom: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .mac-menubar .lang-link:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+}
+
+.mac-menubar .lang-link.active {
+  color: var(--terminal-accent);
+  background-color: rgba(0, 0, 0, 0.08);
+}
+
+@media (prefers-color-scheme: dark) {
+  .mac-menubar .lang-link.active {
+    background-color: rgba(255, 255, 255, 0.15);
+  }
+}
+
+.menu-status {
+  display: flex;
+  align-items: center;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: background-color 0.15s ease;
+}
+
+.menu-status:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+@media (prefers-color-scheme: dark) {
+  .menu-status:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+}
+
+.menu-status .status-icon {
+  color: var(--terminal-green);
+  font-size: 0.7rem;
+  animation: statusPulse 2s ease-in-out infinite;
+}
+
+@keyframes statusPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+/* ========================================
+   Mac Menu Bar Style
+   ======================================== */
+.mac-menubar {
+  background: rgba(var(--menubar-bg-rgb), 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--terminal-border);
+  padding: 0;
+}
+
+:root {
+  --menubar-bg-rgb: 245, 245, 245;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --menubar-bg-rgb: 26, 31, 41;
+  }
+}
+
+.menubar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  height: 32px;
+  max-width: 100%;
+}
+
+.menubar-left {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+.menu-logo {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  color: var(--terminal-text);
+  font-weight: 600;
+  font-size: 0.9rem;
+  border-radius: 4px;
+  transition: background-color 0.15s ease;
+}
+
+.menu-logo:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+  border-bottom: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .menu-logo:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+}
+
+.logo-icon {
+  font-size: 1rem;
+  opacity: 0.8;
+}
+
+.logo-text {
+  letter-spacing: -0.3px;
+}
+
+.menu-items {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  margin-left: 8px;
+}
+
+.menu-item {
+  padding: 4px 12px;
+  color: var(--terminal-text);
+  font-size: 0.85rem;
+  font-weight: 500;
+  border-radius: 4px;
+  transition: background-color 0.15s ease;
+  white-space: nowrap;
+}
+
+.menu-item:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+  border-bottom: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .menu-item:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+}
+
+.menubar-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* ========================================
+   Language Content
+   ======================================== */
+.lang-content {
+  display: none;
+  animation: fadeIn 0.3s ease-in;
+}
+
+.lang-content[data-lang="en"] {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ========================================
+   Main Content (Terminal Window)
+   ======================================== */
+.site-main {
+  min-height: 100vh;
+  padding: 0;
+  background-color: var(--terminal-window);
+}
+
+.site-main .container {
+  padding: 0 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* ========================================
+   Home Page (Terminal Session Style)
+   ======================================== */
+.terminal-home {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 0;
+}
+
+.terminal-session {
+  font-family: 'SF Mono', 'Monaco', 'Consolas', monospace;
+  line-height: 1.8;
+}
+
+.terminal-line {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 20px;
+  margin-bottom: 8px;
+}
+
+.prompt {
+  color: var(--terminal-accent);
+  font-weight: bold;
+  user-select: none;
+}
+
+.command {
+  color: var(--terminal-green);
+  font-weight: 500;
+}
+
+.command-blink {
+  color: var(--terminal-accent);
+  font-weight: bold;
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+.terminal-output {
+  margin-left: 20px;
+  margin-bottom: 15px;
+  color: var(--terminal-text);
+}
+
+/* Profile Box */
+.profile-box {
+  margin-top: 10px;
+}
+
+.profile-ascii {
+  color: var(--terminal-accent);
+  font-size: 0.75rem;
+  line-height: 1.4;
+  margin-bottom: 15px;
+  white-space: pre;
+  overflow-x: auto;
+}
+
+.profile-description {
+  color: var(--terminal-text);
+  margin-bottom: 10px;
+  padding: 10px 0;
+  border-left: 3px solid var(--terminal-accent);
+  padding-left: 15px;
+}
+
+.profile-tags {
+  color: var(--terminal-text-secondary);
+  font-size: 0.85rem;
+  font-style: italic;
+}
+
+/* Post List */
+.post-list-header {
+  color: var(--terminal-text-secondary);
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+}
+
+.post-options {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.post-option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 15px;
+  background: transparent;
+  border: 1px solid var(--terminal-border);
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  color: var(--terminal-text);
+}
+
+.post-option:hover {
+  background: var(--code-bg);
+  border-color: var(--terminal-accent);
+  transform: translateX(5px);
+  border-bottom: 1px solid var(--terminal-accent);
+}
+
+.option-number {
+  color: var(--terminal-accent);
+  font-weight: bold;
+  min-width: 40px;
+  font-size: 0.95rem;
+}
+
+.option-date {
+  color: var(--terminal-text-secondary);
+  font-size: 0.85rem;
+  min-width: 130px;
+}
+
+.option-title {
+  color: var(--terminal-text);
+  font-weight: 500;
+  flex: 1;
+}
+
+.post-option:hover .option-title {
+  color: var(--terminal-accent);
+}
+
+.option-category {
+  color: var(--terminal-text-secondary);
+  font-size: 0.8rem;
+  font-style: italic;
+}
+
+/* Terminal Pagination */
+.terminal-pagination {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.terminal-pagination a,
+.terminal-pagination .current,
+.terminal-pagination .space {
+  padding: 8px 14px;
+  border: 1px solid var(--terminal-border);
+  border-radius: 4px;
+  background: var(--code-bg);
+  color: var(--terminal-text);
+  transition: all 0.2s ease;
+  font-family: monospace;
+}
+
+.terminal-pagination a:hover {
+  background: var(--terminal-accent);
+  color: var(--terminal-window);
+  border-color: var(--terminal-accent);
+  border-bottom: 1px solid var(--terminal-accent);
+}
+
+.terminal-pagination .current {
+  background: var(--terminal-accent);
+  color: var(--terminal-window);
+  border-color: var(--terminal-accent);
+  font-weight: bold;
+}
+
+/* ========================================
+   Post Page (Terminal Document View)
+   ======================================== */
+.post,
+.page {
+  max-width: 1200px;
+  margin: 0 auto;
+  background: transparent;
+  padding: 40px 0;
+  border: none;
+}
+
+.post-header,
+.page-header {
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--terminal-border);
+}
+
+.post-header::before,
+.page-header::before {
+  content: "$ cat ";
+  color: var(--terminal-prompt);
+  font-weight: bold;
+  margin-right: 8px;
+}
+
+.post-title,
+.page-title {
+  font-size: 1.8rem;
+  margin-bottom: 12px;
+  color: var(--terminal-accent);
+  display: inline;
+}
+
+.post-content,
+.page-content {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--terminal-text);
+}
+
+.post-content h2,
+.page-content h2 {
+  margin-top: 40px;
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+  color: var(--terminal-accent);
+  padding-left: 0;
+  border-left: none;
+}
+
+.post-content h2::before,
+.page-content h2::before {
+  content: "## ";
+  color: var(--terminal-prompt);
+  margin-right: 8px;
+}
+
+.post-content h3,
+.page-content h3 {
+  margin-top: 30px;
+  margin-bottom: 15px;
+  font-size: 1.2rem;
+  color: var(--terminal-text);
+}
+
+.post-content h3::before,
+.page-content h3::before {
+  content: "### ";
+  color: var(--terminal-prompt);
+  margin-right: 8px;
+}
+
+.post-content p,
+.page-content p {
+  margin-bottom: 20px;
+}
+
+.post-content img,
+.page-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+  margin: 30px 0;
+  border: 1px solid var(--terminal-border);
+}
+
+/* Inline Code */
+.post-content code,
+.page-content code {
+  background: var(--code-bg);
+  color: var(--terminal-green);
+  padding: 3px 8px;
+  border-radius: 3px;
+  font-family: 'SF Mono', 'Monaco', 'Consolas', monospace;
+  font-size: 0.9em;
+  border: 1px solid var(--terminal-border);
+}
+
+/* Code Block - Full Width */
+.post-content pre,
+.page-content pre {
+  background: var(--code-bg);
+  padding: 25px 20px;
+  border-radius: 0;
+  overflow-x: auto;
+  margin: 30px -20px;
+  border: none;
+  border-top: 1px solid var(--terminal-border);
+  border-bottom: 1px solid var(--terminal-border);
+  position: relative;
+  box-shadow: inset 0 1px 3px var(--terminal-shadow);
+}
+
+.post-content pre::before,
+.page-content pre::before {
+  content: "# code";
+  color: var(--terminal-text-secondary);
+  position: absolute;
+  right: 20px;
+  top: 8px;
+  font-size: 0.75rem;
+  opacity: 0.6;
+  font-style: italic;
+}
+
+.post-content pre code,
+.page-content pre code {
+  background: transparent;
+  padding: 0;
+  border: none;
+  color: var(--terminal-text);
+  display: block;
+  font-size: 0.95em;
+  line-height: 1.6;
+}
+
+.post-footer {
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid var(--terminal-border);
+}
+
+.post-tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.post-tags::before {
+  content: "tags:";
+  color: var(--terminal-prompt);
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+.tag {
+  background: var(--code-bg);
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  color: var(--terminal-text);
+  border: 1px solid var(--terminal-border);
+  transition: all 0.2s ease;
+}
+
+.tag::before {
+  content: "#";
+  color: var(--terminal-prompt);
+}
+
+.tag:hover {
+  background: var(--terminal-accent);
+  color: var(--terminal-window);
+  border-color: var(--terminal-accent);
+}
+
+.post-nav {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+  gap: 15px;
+}
+
+.post-nav-prev,
+.post-nav-next {
+  flex: 1;
+  padding: 12px 15px;
+  background: var(--code-bg);
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  border: 1px solid var(--terminal-border);
+}
+
+.post-nav-prev::before {
+  content: "← ";
+  color: var(--terminal-prompt);
+}
+
+.post-nav-next::after {
+  content: " →";
+  color: var(--terminal-prompt);
+}
+
+.post-nav-prev:hover,
+.post-nav-next:hover {
+  background: var(--terminal-accent);
+  color: var(--terminal-window);
+  border-color: var(--terminal-accent);
+  transform: translateY(-2px);
+}
+
+.post-nav-next {
+  text-align: right;
+}
+
+/* ========================================
+   Archive Page (Terminal List View)
+   ======================================== */
+.archive-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 0;
+}
+
+.archive-header {
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--terminal-border);
+}
+
+.archive-header::before {
+  content: "$ ls -la ~/archives/";
+  color: var(--terminal-prompt);
+  font-weight: bold;
+  display: block;
+  margin-bottom: 15px;
+  font-size: 0.95rem;
+}
+
+.archive-title {
+  font-size: 1.6rem;
+  color: var(--terminal-accent);
+}
+
+.archive-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.archive-item {
+  display: flex;
+  gap: 15px;
+  padding: 12px 15px;
+  border-left: 3px solid var(--terminal-accent);
+  background: var(--code-bg);
+  transition: all 0.2s ease;
+  border-radius: 4px;
+  align-items: center;
+}
+
+.archive-item::before {
+  content: "›";
+  color: var(--terminal-prompt);
+  font-weight: bold;
+}
+
+.archive-item:hover {
+  transform: translateX(10px);
+  background: var(--terminal-border);
+  border-left-color: var(--terminal-green);
+}
+
+.archive-date {
+  color: var(--terminal-text-secondary);
+  font-size: 0.85rem;
+  min-width: 100px;
+  font-family: monospace;
+}
+
+.archive-item .archive-title {
+  font-size: 1rem;
+  margin: 0;
+  color: var(--terminal-text);
+}
+
+.archive-item:hover .archive-title {
+  color: var(--terminal-accent);
+}
+
+/* ========================================
+   Pagination (Terminal Style)
+   ======================================== */
+.pagination {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  padding: 20px 0;
+}
+
+.pagination a,
+.pagination .current {
+  padding: 8px 14px;
+  border: 1px solid var(--terminal-border);
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  background: var(--code-bg);
+  color: var(--terminal-text);
+  min-width: 40px;
+  text-align: center;
+}
+
+.pagination a:hover {
+  background: var(--terminal-accent);
+  color: var(--terminal-window);
+  border-color: var(--terminal-accent);
+  transform: translateY(-2px);
+}
+
+.pagination .current {
+  background: var(--terminal-accent);
+  color: var(--terminal-window);
+  border-color: var(--terminal-accent);
+  font-weight: bold;
+}
+
+/* ========================================
+   Footer (Mac Status Bar)
+   ======================================== */
+.site-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.footer-statusbar {
+  background: rgba(var(--menubar-bg-rgb), 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 1px solid var(--terminal-border);
+  padding: 0;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  height: 28px;
+  max-width: 100%;
+}
+
+.footer-left {
+  display: flex;
+  align-items: center;
+}
+
+.footer-status {
+  color: var(--terminal-green);
+  font-size: 0.6rem;
+  opacity: 0.8;
+  animation: statusPulse 2s ease-in-out infinite;
+}
+
+.footer-right {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.footer-link {
+  padding: 4px 10px;
+  color: var(--terminal-text);
+  font-size: 0.8rem;
+  font-weight: 500;
+  border-radius: 4px;
+  transition: background-color 0.15s ease;
+  white-space: nowrap;
+}
+
+.footer-link:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+  border-bottom: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .footer-link:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+}
+
+/* ========================================
+   Responsive Design
+   ======================================== */
+@media (max-width: 768px) {
+  body {
+    font-size: 13px;
+    padding-top: 70px;
+    padding-bottom: 36px;
+  }
+
+  .container {
+    padding: 0 15px;
+  }
+
+  .terminal-titlebar {
+    padding: 8px 12px;
+  }
+
+  .terminal-button {
+    width: 10px;
+    height: 10px;
+  }
+
+  .mac-menubar {
+    position: relative;
+  }
+
+  .menubar-container {
+    height: auto;
+    padding: 6px 10px;
+  }
+
+  .menubar-left {
+    gap: 4px;
+  }
+
+  .menu-logo {
+    font-size: 0.85rem;
+  }
+
+  .menu-logo .logo-text {
+    display: none;
+  }
+
+  .menu-items {
+    gap: 2px;
+    margin-left: 4px;
+  }
+
+  .menu-item {
+    padding: 4px 8px;
+    font-size: 0.75rem;
+  }
+
+  .menubar-right {
+    gap: 6px;
+  }
+
+  .mac-menubar .lang-link {
+    padding: 4px 6px;
+    font-size: 0.7rem;
+  }
+
+  .footer-container {
+    padding: 6px 10px;
+    height: 24px;
+  }
+
+  .footer-status {
+    font-size: 0.5rem;
+  }
+
+  .footer-right {
+    gap: 3px;
+  }
+
+  .footer-link {
+    padding: 3px 6px;
+    font-size: 0.7rem;
+  }
+
+  .site-main .container {
+    padding: 0 15px;
+  }
+
+  .terminal-home {
+    padding: 30px 0;
+  }
+
+  .profile-ascii {
+    font-size: 0.55rem;
+  }
+
+  .post-option {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .option-number {
+    min-width: auto;
+  }
+
+  .option-date {
+    min-width: auto;
+    font-size: 0.75rem;
+  }
+
+  .option-title {
+    font-size: 0.9rem;
+  }
+
+  .option-category {
+    font-size: 0.75rem;
+  }
+
+  .post,
+  .page {
+    padding: 30px 0;
+  }
+
+  .post-title,
+  .page-title {
+    font-size: 1.4rem;
+  }
+
+  .post-header,
+  .page-header {
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+  }
+
+  .post-content h2,
+  .page-content h2 {
+    font-size: 1.3rem;
+    margin-top: 30px;
+  }
+
+  .post-content h3,
+  .page-content h3 {
+    font-size: 1.1rem;
+  }
+
+  .post-content pre,
+  .page-content pre {
+    margin: 25px -15px;
+    padding: 20px 15px;
+  }
+
+  .post-nav {
+    flex-direction: column;
+  }
+
+  .post-nav-next {
+    text-align: left;
+  }
+
+  .archive-page {
+    padding: 30px 0;
+  }
+
+  .archive-item {
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-start;
+  }
+
+  .archive-date {
+    min-width: auto;
+  }
+
+  .pagination {
+    gap: 5px;
+  }
+
+  .pagination a,
+  .pagination .current {
+    padding: 6px 10px;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    font-size: 12px;
+    padding-top: 60px;
+    padding-bottom: 32px;
+  }
+
+  .menubar-container {
+    padding: 4px 8px;
+  }
+
+  .menu-logo {
+    font-size: 0.8rem;
+    padding: 3px 6px;
+  }
+
+  .menu-logo .logo-icon {
+    font-size: 0.85rem;
+  }
+
+  .menu-items {
+    gap: 1px;
+    margin-left: 2px;
+  }
+
+  .menu-item {
+    padding: 3px 6px;
+    font-size: 0.7rem;
+  }
+
+  .mac-menubar .lang-link {
+    padding: 3px 5px;
+    font-size: 0.65rem;
+  }
+
+  .menu-status {
+    padding: 3px 5px;
+  }
+
+  .footer-container {
+    padding: 4px 8px;
+    height: 22px;
+  }
+
+  .footer-status {
+    font-size: 0.45rem;
+  }
+
+  .footer-right {
+    gap: 2px;
+  }
+
+  .footer-link {
+    padding: 2px 5px;
+    font-size: 0.65rem;
+  }
+
+  .post,
+  .page {
+    padding: 25px 0;
+  }
+
+  .post-title,
+  .page-title {
+    font-size: 1.3rem;
+  }
+
+  .post-content h2,
+  .page-content h2 {
+    font-size: 1.2rem;
+    margin-top: 25px;
+  }
+
+  .post-content h3,
+  .page-content h3 {
+    font-size: 1rem;
+  }
+
+  .post-content pre,
+  .page-content pre {
+    margin: 20px -15px;
+    padding: 18px 15px;
+  }
+
+  .post-content pre::before,
+  .page-content pre::before {
+    font-size: 0.7rem;
+    right: 15px;
+    top: 6px;
+  }
+
+  .post-item {
+    padding: 15px;
+  }
+
+  .post-item .post-title {
+    font-size: 1.1rem;
+  }
+
+  .read-more {
+    font-size: 0.85rem;
+  }
+
+  .terminal-home {
+    padding: 25px 0;
+  }
+
+  .archive-page {
+    padding: 25px 0;
+  }
+
+  .profile-ascii {
+    font-size: 0.5rem;
+  }
+
+  .terminal-output {
+    margin-left: 10px;
+  }
+
+  .post-option {
+    padding: 8px 12px;
+  }
+
+  .option-title {
+    font-size: 0.85rem;
+  }
+}

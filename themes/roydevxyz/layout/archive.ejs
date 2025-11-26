@@ -1,0 +1,41 @@
+<div class="archive-page">
+  <header class="archive-header">
+    <h1 class="archive-title">
+      <% if (page.category) { %>
+        <%= __('sidebar.category') %>: <%= page.category.name || page.category %>
+      <% } else if (page.tag) { %>
+        <%= __('sidebar.tag') %>: <%= page.tag.name || page.tag %>
+      <% } else if (page.archive) { %>
+        <% if (page.year) { %>
+          <%= __('sidebar.archive') %>: <%= page.year %><% if (page.month) { %>/<%= page.month %><% } %>
+        <% } else { %>
+          <%= __('menu.archives') %>
+        <% } %>
+      <% } else { %>
+        <%= __('menu.archives') %>
+      <% } %>
+    </h1>
+  </header>
+
+  <div class="archive-list">
+    <% page.posts.each(function(post) { %>
+      <article class="archive-item">
+        <h2 class="archive-title">
+          <a href="<%- url_for(post.path) %>"><%= post.title %></a>
+        </h2>
+        <time datetime="<%= date_xml(post.date) %>" class="archive-date">
+          <%= date(post.date, 'YYYY-MM-DD') %>
+        </time>
+      </article>
+    <% }); %>
+  </div>
+
+  <% if (page.total > 1) { %>
+    <nav class="pagination">
+      <%- paginator({
+        prev_text: '← Previous',
+        next_text: 'Next →'
+      }) %>
+    </nav>
+  <% } %>
+</div>

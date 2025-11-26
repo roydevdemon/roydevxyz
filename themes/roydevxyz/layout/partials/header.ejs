@@ -1,0 +1,49 @@
+<header class="site-header">
+  <!-- Mac Menu Bar Style -->
+  <nav class="mac-menubar">
+    <div class="menubar-container">
+      <!-- Left: Logo/Site Name -->
+      <div class="menubar-left">
+        <!-- Menu Items -->
+        <div class="menu-items">
+          <% for (var name in theme.menu) { %>
+            <a href="<%- url_for(theme.menu[name]) %>" class="menu-item">
+              <%= __('menu.' + name.toLowerCase()) || name %>
+            </a>
+          <% } %>
+        </div>
+      </div>
+
+      <!-- Right: Status Icons & Language Switcher -->
+      <div class="menubar-right">
+        <div class="language-switcher">
+          <%
+          var languages = config.language || ['en', 'ko'];
+          if (typeof languages === 'string') {
+            languages = [languages];
+          }
+          %>
+
+          <% languages.forEach(function(lang) { %>
+            <a href="#" class="lang-link" data-lang="<%= lang %>">
+              <%= lang.toUpperCase() %>
+            </a>
+          <% }); %>
+        </div>
+        <div class="menu-status">
+          <span class="status-icon">◉</span>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Terminal Window Title Bar -->
+  <div class="terminal-titlebar">
+    <div class="terminal-buttons">
+      <span class="terminal-button close"></span>
+      <span class="terminal-button minimize"></span>
+      <span class="terminal-button maximize"></span>
+    </div>
+    <span class="terminal-title"><%= config.title %> — terminal</span>
+  </div>
+</header>

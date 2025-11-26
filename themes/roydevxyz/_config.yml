@@ -1,0 +1,29 @@
+# RoyDevXyz Theme Configuration
+
+# Menu
+menu:
+  Home: /
+  Archives: /archives
+  About: /about
+
+# Sidebar
+sidebar: left
+
+# Widgets
+widgets:
+  - category
+  - tag
+  - archive
+  - recent_posts
+
+# Social Links
+social:
+  GitHub: https://github.com/roydevdemon
+  LinkedIn: https://linkedin.com/in/roydevdive
+  Twitter: https://twitter.com/roydevdemon
+  YouTube: https://youtube.com/@roydevdemon
+
+  
+# Miscellaneous
+favicon: /favicon.ico
+google_analytics:

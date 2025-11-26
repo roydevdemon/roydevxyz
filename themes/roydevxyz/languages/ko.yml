@@ -1,0 +1,28 @@
+menu:
+  home: 홈
+  about: 소개
+  archives: 아카이브
+
+sidebar:
+  category: 카테고리
+  tag: 태그
+  archive: 아카이브
+  recent_posts: 최근 포스트
+
+post:
+  posted: 게시일
+  updated: 수정일
+  read_more: 더 읽기
+  toc: 목차
+
+pagination:
+  prev: 이전
+  next: 다음
+
+footer:
+  powered: "%s 기반"
+  theme: "테마"
+
+language:
+  name: 한국어
+  code: ko

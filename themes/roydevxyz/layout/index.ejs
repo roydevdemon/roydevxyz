@@ -1,0 +1,61 @@
+<div class="terminal-home">
+  <!-- Terminal Welcome Screen -->
+  <div class="terminal-session">
+    <div class="terminal-line">
+      <span class="prompt">$</span>
+      <span class="command">whoami</span>
+    </div>
+    <div class="terminal-output">
+      roy D.
+    </div>
+
+    <div class="terminal-line">
+      <span class="prompt">$</span>
+      <span class="command">cat ~/profile.txt</span>
+    </div>
+    <div class="terminal-output profile-box">
+      <div class="profile-description">
+<%= config.description %>
+      </div>
+    </div>
+
+    <div class="terminal-line">
+      <span class="prompt">$</span>
+      <span class="command">ls -la ~/archives/</span>
+    </div>
+    <div class="terminal-output">
+      <div class="post-options">
+        <% var index = 1; %>
+        <% page.posts.each(function(post) { %>
+          <a href="<%- url_for(post.path) %>" class="post-option">
+            <span class="option-number">[<%= index %>]</span>
+            <span class="option-title"><%= post.title %></span>
+            <span class="option-date"><%= date(post.date, 'YYYY-MM-DD HH:mm') %></span>
+            <% if (post.categories && post.categories.length) { %>
+              <span class="option-category">
+                <% post.categories.each(function(cat) { %>
+                  (<%= cat.name %>)
+                <% }); %>
+              </span>
+            <% } %>
+          </a>
+          <% index++; %>
+        <% }); %>
+      </div>
+    </div>
+
+    <div class="terminal-line">
+      <span class="prompt">$</span>
+      <span class="command-blink">_</span>
+    </div>
+  </div>
+
+  <% if (page.total > 1) { %>
+    <nav class="terminal-pagination">
+      <%- paginator({
+        prev_text: '← prev',
+        next_text: 'next →'
+      }) %>
+    </nav>
+  <% } %>
+</div>

@@ -1,0 +1,28 @@
+menu:
+  home: Home
+  about: About
+  archives: Archives
+
+sidebar:
+  category: Categories
+  tag: Tags
+  archive: Archives
+  recent_posts: Recent Posts
+
+post:
+  posted: Posted on
+  updated: Updated
+  read_more: Read More
+  toc: Table of Contents
+
+pagination:
+  prev: Previous
+  next: Next
+
+footer:
+  powered: "Powered by %s"
+  theme: "Theme"
+
+language:
+  name: English
+  code: en
