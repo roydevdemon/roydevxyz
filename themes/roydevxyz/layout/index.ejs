@@ -19,30 +19,29 @@
       </div>
     </div>
 
-    <div class="terminal-line">
-      <span class="prompt">$</span>
-      <span class="command">ls -la ~/archives/</span>
-    </div>
-    <div class="terminal-output">
-      <div class="post-options">
-        <% var index = 1; %>
-        <% page.posts.each(function(post) { %>
-          <a href="<%- url_for(post.path) %>" class="post-option">
-            <span class="option-number">[<%= index %>]</span>
-            <span class="option-title"><%= post.title %></span>
-            <span class="option-date"><%= date(post.date, 'YYYY-MM-DD HH:mm') %></span>
-            <% if (post.categories && post.categories.length) { %>
-              <span class="option-category">
-                <% post.categories.each(function(cat) { %>
-                  (<%= cat.name %>)
-                <% }); %>
-              </span>
-            <% } %>
-          </a>
-          <% index++; %>
-        <% }); %>
+    
+
+    <% var categories = site && site.categories ? site.categories.sort('name') : null; %>
+    <% if (categories && categories.length) { %>
+      <div class="terminal-line">
+        <span class="prompt">$</span>
+        <span class="command">ls -la ~/categories/</span>
       </div>
-    </div>
+      <div class="terminal-output">
+        <div class="contents-grid">
+          <% categories.each(function(category) { %>
+            <% if (!category.length) { return; } %>
+            <a href="<%- url_for(category.path) %>" class="contents-card">
+              <div class="contents-card__header">
+                <span class="contents-card__name"><%= category.name %></span>
+                <span class="contents-card__count"><%= category.length %> posts</span>
+              </div>
+              <div class="contents-card__path">/<%= category.path %></div>
+            </a>
+          <% }); %>
+        </div>
+      </div>
+    <% } %>
 
     <div class="terminal-line">
       <span class="prompt">$</span>

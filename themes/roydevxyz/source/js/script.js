@@ -59,15 +59,15 @@
   // Smooth scroll to top
   function addBackToTop() {
     const backToTop = document.createElement('button');
-    backToTop.textContent = '↑';
+    backToTop.textContent = '👾';
     backToTop.className = 'back-to-top';
     backToTop.style.cssText = `
       position: fixed;
-      bottom: 30px;
-      right: 30px;
+      bottom: 3rem;
+      right: 1rem;
       width: 50px;
       height: 50px;
-      background: #3498db;
+      background: #0f1419;
       color: white;
       border: none;
       border-radius: 50%;

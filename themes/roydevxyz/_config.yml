@@ -3,7 +3,7 @@
 # Menu
 menu:
   Home: /
-  Archives: /archives
+  Categories: /categories
   About: /about
 
 # Sidebar
@@ -20,7 +20,7 @@ widgets:
 social:
   GitHub: https://github.com/roydevdemon
   LinkedIn: https://linkedin.com/in/roydevdive
-  Twitter: https://twitter.com/roydevdemon
+  X(Twitter): https://twitter.com/roydevdemon
   YouTube: https://youtube.com/@roydevdemon
 
   

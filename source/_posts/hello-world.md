@@ -5,7 +5,8 @@ tags:
   - tutorial
   - hexo
 categories:
-  - Getting Started
+  - development
+  - rust
 excerpt:
   en: Welcome to Hexo! This is your very first post.
   ko: Hexo에 오신 것을 환영합니다! 이것은 당신의 첫 번째 포스트입니다.

@@ -1,7 +1,12 @@
 // Multilingual Helper Functions
 
 hexo.extend.helper.register('i18n_field', function(field, lang) {
-  if (!field) return '';
+  if (field === undefined || field === null) return '';
+
+  // Arrays are returned as-is
+  if (Array.isArray(field)) {
+    return field;
+  }
 
   // If field is a string, return it directly
   if (typeof field === 'string') {
@@ -13,11 +18,15 @@ hexo.extend.helper.register('i18n_field', function(field, lang) {
     // Get the current language or default to 'en'
     const currentLang = lang || this.page.lang || this.config.language[0] || 'en';
 
-    // Return the field for the current language, or fallback to English, or first available
-    return field[currentLang] || field['en'] || field[Object.keys(field)[0]] || '';
+    const localized =
+      field[currentLang] ||
+      field['en'] ||
+      field[Object.keys(field)[0]];
+
+    return localized !== undefined ? localized : '';
   }
 
-  return '';
+  return field;
 });
 
 hexo.extend.helper.register('get_current_lang', function() {
@@ -38,4 +47,9 @@ hexo.extend.helper.register('i18n_tags', function(tags, lang) {
   }
 
   return tags;
+});
+
+hexo.extend.helper.register('render_markdown', function(text) {
+  if (!text) return '';
+  return hexo.render.renderSync({text, engine: 'markdown'});
 });

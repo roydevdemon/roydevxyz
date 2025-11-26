@@ -1,0 +1,34 @@
+<article class="page categories-page">
+  <header class="page-header">
+    <h1 class="page-title"><%= __('menu.categories') || page.title %></h1>
+  </header>
+
+  <div class="page-content categories-content">
+    <% var categories = site && site.categories ? site.categories.sort('name') : null; %>
+    <% if (categories && categories.length) { %>
+      <% categories.each(function(category) { %>
+        <% if (!category.length) { return; } %>
+        <section class="category-section">
+          <div class="category-section__header">
+            <h2 class="category-section__title">
+              <span class="prompt">$</span>
+              <span class="command">cd ~/contents/<%= category.name %></span>
+            </h2>
+            <span class="category-section__count"><%= category.length %> posts</span>
+          </div>
+          <ul class="category-posts">
+            <% category.posts.sort('-date').each(function(post) { %>
+              <li class="category-post">
+                <a href="<%- url_for(post.path) %>" class="category-post__title"><%= post.title %></a>
+                <span class="category-post__meta"><%= date(post.date, 'YYYY-MM-DD') %></span>
+              </li>
+            <% }); %>
+          </ul>
+        </section>
+      <% }); %>
+    <% } else { %>
+      <p class="category-empty">No categories yet.</p>
+    <% } %>
+  </div>
+</article>
+

@@ -1,5 +1,6 @@
 menu:
   home: 홈
+  categories: 카테고리
   about: 소개
   archives: 아카이브
 
@@ -26,3 +27,6 @@ footer:
 language:
   name: 한국어
   code: ko
+
+about:
+  links: 링크

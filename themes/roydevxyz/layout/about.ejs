@@ -1,0 +1,73 @@
+<%
+  var languages = config.language || ['en'];
+  if (typeof languages === 'string') {
+    languages = [languages];
+  }
+  var sections = page.sections || [];
+  var links = page.links || null;
+%>
+
+<article class="page about-page">
+  <% languages.forEach(function(lang, index) { %>
+    <section class="lang-content" data-lang="<%= lang %>" style="<%= index === 0 ? '' : 'display:none;' %>">
+      <div class="about-terminal">
+        <div class="terminal-line">
+          <span class="prompt">$</span>
+          <span class="command">whoami</span>
+        </div>
+        <div class="terminal-output about-hero">
+          <h1 class="page-title"><%= i18n_field(page.title, lang) || page.title %></h1>
+          <% if (page.tagline) { %>
+            <p class="about-hero__tagline"><%= i18n_field(page.tagline, lang) %></p>
+          <% } %>
+        </div>
+
+        <% if (sections.length) { %>
+          <% sections.forEach(function(section) {
+            var heading = i18n_field(section.heading, lang) || section.heading;
+            var body = section.body ? i18n_field(section.body, lang) : '';
+            var bullets = section.bullets ? i18n_field(section.bullets, lang) : null;
+            var sectionId = (section.id || heading || 'section').toString().toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+            var sectionCommand = section.command || ('cat ~/about/' + sectionId + '.md');
+          %>
+            <div class="terminal-line">
+              <span class="prompt">$</span>
+              <span class="command"><%= sectionCommand %></span>
+            </div>
+            <div class="terminal-output">
+              <section class="about-section" id="<%= sectionId %>">
+                <div class="about-section__header">
+                  <% if (section.icon) { %>
+                    <span class="about-section__icon"><%= section.icon %></span>
+                  <% } %>
+                  <h2><%= heading %></h2>
+                </div>
+                <% if (body) { %>
+                  <div class="about-section__body">
+                    <%- render_markdown(body) %>
+                  </div>
+                <% } %>
+                <% if (bullets && bullets.length) { %>
+                  <ul class="about-section__list">
+                    <% bullets.forEach(function(item) { %>
+                      <li><%= item %></li>
+                    <% }); %>
+                  </ul>
+                <% } %>
+              </section>
+            </div>
+          <% }); %>
+        <% } else { %>
+          <div class="terminal-line">
+            <span class="prompt">$</span>
+            <span class="command">cat ~/about/readme.md</span>
+          </div>
+          <div class="terminal-output page-content">
+            <%- page.content %>
+          </div>
+        <% } %>
+      </div>
+    </section>
+  <% }); %>
+</article>
+

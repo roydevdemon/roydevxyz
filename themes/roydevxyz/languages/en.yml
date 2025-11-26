@@ -1,5 +1,6 @@
 menu:
   home: Home
+  categories: Categories
   about: About
   archives: Archives
 
@@ -26,3 +27,6 @@ footer:
 language:
   name: English
   code: en
+
+about:
+  links: Links
