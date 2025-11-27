@@ -38,5 +38,5 @@ jobs:
         with:
           apiToken: ${{ secrets.CF_BLOG_API_TOKEN }}
           accountId: ${{ secrets.CF_BLOG_ACCOUNT_ID }}
-          command: pages deploy public --project-name=YOUR_PROJECT_NAME
+          command: pages deploy public --project-name=roydevxyz
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
