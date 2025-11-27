@@ -23,7 +23,12 @@ social:
   X(Twitter): https://twitter.com/roydevdemon
   YouTube: https://youtube.com/@roydevdemon
 
-  
 # Miscellaneous
 favicon: /favicon.ico
 google_analytics:
+
+# Deployment 
+deploy:
+  type: git
+  repo: https://github.com/roydevdemon/roydevxyz.git
+  branch: master

@@ -40,7 +40,11 @@
   <!-- Terminal Window Title Bar -->
   <div class="terminal-titlebar">
     <div class="terminal-buttons">
-      <span class="terminal-button close"></span>
+      <% if (is_home()) { %>
+        <span class="terminal-button close" onclick="window.close();" style="cursor: pointer;" title="<%= __('navigation.close') %>"></span>
+      <% } else { %>
+        <span class="terminal-button close" onclick="window.history.back();" style="cursor: pointer;" title="<%= __('navigation.close') %>"></span>
+      <% } %>
       <span class="terminal-button minimize"></span>
       <span class="terminal-button maximize"></span>
     </div>

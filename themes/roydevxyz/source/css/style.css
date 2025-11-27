@@ -52,7 +52,7 @@
 }
 
 body {
-  font-family: 'SF Mono', 'Monaco', 'Cascadia Code', 'Roboto Mono', 'Fira Code', 'Consolas', monospace;
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'SF Mono', 'Segoe UI', 'Roboto', sans-serif;
   line-height: 1.6;
   color: var(--terminal-text);
   background-color: var(--terminal-bg);
@@ -108,6 +108,7 @@ a:hover {
   align-items: center;
   gap: 8px;
   border-bottom: 1px solid var(--terminal-border);
+  justify-content: space-between;
 }
 
 .terminal-buttons {
@@ -138,6 +139,7 @@ a:hover {
   color: var(--terminal-text-secondary);
   font-size: 12px;
   margin-left: 10px;
+  flex: 1;
 }
 
 /* Mac Menu Bar - Language Switcher */
@@ -310,6 +312,33 @@ a:hover {
   gap: 12px;
 }
 
+.close-page-btn {
+  background: none;
+  border: none;
+  color: var(--terminal-text);
+  font-size: 1.2rem;
+  padding: 2px 8px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.15s ease;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  font-family: Arial, sans-serif;
+}
+
+.close-page-btn:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+@media (prefers-color-scheme: dark) {
+  .close-page-btn:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+  }
+}
+
 /* ========================================
    Language Content
    ======================================== */
@@ -356,7 +385,7 @@ a:hover {
 }
 
 .terminal-session {
-  font-family: 'SF Mono', 'Monaco', 'Consolas', monospace;
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   line-height: 1.8;
 }
 
@@ -390,6 +419,28 @@ a:hover {
   51%, 100% { opacity: 0; }
 }
 
+/* Terminal Input */
+.terminal-input-line {
+  margin-bottom: 20px;
+}
+
+.terminal-input {
+  background: transparent;
+  border: none;
+  color: var(--terminal-green);
+  font-family: 'D2Coding', 'SF Mono', 'Monaco', 'Consolas', monospace;
+  font-size: inherit;
+  font-weight: 500;
+  outline: none;
+  flex: 1;
+  padding: 0;
+  caret-color: var(--terminal-green);
+}
+
+.terminal-input::placeholder {
+  color: transparent;
+}
+
 .terminal-output {
   margin-left: 20px;
   margin-bottom: 15px;
@@ -399,6 +450,18 @@ a:hover {
 /* Profile Box */
 .profile-box {
   margin-top: 10px;
+}
+
+.profile-header {
+  margin-bottom: 15px;
+}
+
+.profile-header-image {
+  width: 160px;
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+  display: block;
 }
 
 .profile-ascii {
@@ -858,7 +921,7 @@ a:hover {
   color: var(--terminal-green);
   padding: 3px 8px;
   border-radius: 3px;
-  font-family: 'SF Mono', 'Monaco', 'Consolas', monospace;
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   font-size: 0.9em;
   border: 1px solid var(--terminal-border);
 }
@@ -1199,6 +1262,10 @@ a:hover {
     padding: 0 15px;
   }
 
+  .profile-header-image {
+    width: 120px;
+  }
+
   .terminal-titlebar {
     padding: 8px 12px;
   }
@@ -1372,6 +1439,10 @@ a:hover {
     font-size: 12px;
     padding-top: 60px;
     padding-bottom: 32px;
+  }
+
+  .profile-header-image {
+    width: 80px;
   }
 
   .menubar-container {

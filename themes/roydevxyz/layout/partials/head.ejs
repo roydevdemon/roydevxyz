@@ -18,8 +18,16 @@
 
   <meta name="author" content="<%= config.author %>">
 
+  <!-- Web Fonts -->
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/d2coding@1.3.2/d2coding-subset.min.css">
+
   <!-- Stylesheets -->
   <%- css('css/style') %>
+
+  <!-- JavaScript -->
+  <%- js('js/script') %>
 
   <!-- Favicon -->
   <% if (theme.favicon) { %>

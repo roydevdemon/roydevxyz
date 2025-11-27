@@ -3,29 +3,30 @@
   <div class="terminal-session">
     <div class="terminal-line">
       <span class="prompt">$</span>
-      <span class="command">whoami</span>
+      <span class="command"><%= __('home.whoami') %></span>
     </div>
-    <div class="terminal-output">
-      roy D.
+    <div class="terminal-output profile-box">
+      <div class="profile-header">
+        <img src="<%- url_for('/persona.png') %>" alt="<%= __('home.profile_header') %>" class="profile-header-image">
+      </div>
+      <div class="profile-description lang-content" data-lang="en">
+        Hello there? 
+      </div>
+      <div class="profile-description lang-content" data-lang="ko">
+        안녕?
+      </div>
     </div>
 
     <div class="terminal-line">
       <span class="prompt">$</span>
-      <span class="command">cat ~/profile.txt</span>
+      <span class="command"><a href="<%- url_for('/about') %>" style="color: var(--terminal-green); text-decoration: none;"><%= __('home.about_link') %></a></span>
     </div>
-    <div class="terminal-output profile-box">
-      <div class="profile-description">
-<%= config.description %>
-      </div>
-    </div>
-
-    
 
     <% var categories = site && site.categories ? site.categories.sort('name') : null; %>
     <% if (categories && categories.length) { %>
       <div class="terminal-line">
         <span class="prompt">$</span>
-        <span class="command">ls -la ~/categories/</span>
+        <span class="command"><%= __('home.ls_categories') %></span>
       </div>
       <div class="terminal-output">
         <div class="contents-grid">
@@ -34,7 +35,7 @@
             <a href="<%- url_for(category.path) %>" class="contents-card">
               <div class="contents-card__header">
                 <span class="contents-card__name"><%= category.name %></span>
-                <span class="contents-card__count"><%= category.length %> posts</span>
+                <span class="contents-card__count"><%= category.length %> <%= __('home.posts_count') %></span>
               </div>
               <div class="contents-card__path">/<%= category.path %></div>
             </a>
@@ -43,9 +44,9 @@
       </div>
     <% } %>
 
-    <div class="terminal-line">
+    <div class="terminal-line terminal-input-line">
       <span class="prompt">$</span>
-      <span class="command-blink">_</span>
+      <input type="text" class="terminal-input" id="terminalInput" placeholder="" autocomplete="off" />
     </div>
   </div>
 

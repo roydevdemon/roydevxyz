@@ -4,6 +4,10 @@ menu:
   about: About
   archives: Archives
 
+navigation:
+  close: Close and go back
+  bookmark: Add to bookmarks
+
 sidebar:
   category: Categories
   tag: Tags
@@ -30,3 +34,16 @@ language:
 
 about:
   links: Links
+
+home:
+  whoami: whoami
+  cat_profile: cat ~/profile.txt
+  profile_header: "Welcome to roydev.xyz"
+  profile_description: "roydev.xyz is a blog about AI, Blockchain, Contents, Culture, Meme and more."
+  about_link: cd ~/about && cat README.md
+  ls_categories: ls -la ~/categories/
+  posts_count: posts
+
+terminal:
+  help_message: "Available commands:\n- help: Show this help\n- clear: Clear input\n- about: Go to about page\n- home: Go to home page\n- categories: View categories"
+  command_not_found: "Command not found: {command}\nType 'help' for available commands."

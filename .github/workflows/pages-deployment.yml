@@ -1,0 +1,42 @@
+name: Deploy (roydev.xyz)
+
+on:
+  push:
+    branches:
+      - master        
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      deployment: write
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'  
+          cache: 'npm'        
+
+      - name: Install Dependencies
+        run: |
+          npm ci 
+
+      - name: Install Hexo CLI globally 
+        run: npm install -g hexo-cli
+
+      - name: Generate Static Files
+        run: |
+          npm run clean
+          npm run build
+
+      - name: Deploy to CloudFlare
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CF_BLOG_API_TOKEN }}
+          accountId: ${{ secrets.CF_BLOG_ACCOUNT_ID }}
+          command: pages deploy public --project-name=YOUR_PROJECT_NAME
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
