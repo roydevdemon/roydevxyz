@@ -25,7 +25,7 @@ social:
 
 # Miscellaneous
 favicon: /favicon.ico
-google_analytics:
+google_analytics: G-Z80C5T1NEQ  # Replace with your GA4 Measurement ID
 
 # Deployment 
 deploy:
