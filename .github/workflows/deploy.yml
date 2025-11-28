@@ -27,9 +27,6 @@ jobs:
           npm run clean
           npm run build
 
-      - name: Install Wrangler
-        run: npm install -g wrangler
-
       - name: Deploy
         uses: cloudflare/wrangler-action@4
         with:
