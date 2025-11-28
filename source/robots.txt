@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /about/
+
+# Sitemap location
+Sitemap: https://roydev.xyz/sitemap.xml
