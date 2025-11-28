@@ -27,9 +27,9 @@ jobs:
           npm run clean
           npm run build
 
-      - name: Deploy to CloudFlare Pages
+      - name: Deploy
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy public --project-name=roydevxyz
+          workingDirectory: public
