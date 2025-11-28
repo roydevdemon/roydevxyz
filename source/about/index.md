@@ -15,8 +15,8 @@ sections:
         I'm Roy, a developer focused on AI tooling, blockchain infra, and playful internet culture.  
         I bounce between Seoul and the metaverse to prototype ideas that make builders faster.
       ko: |
-        저는 Roy로, AI 툴링과 블록체인 인프라, 그리고 인터넷 문화 실험에 집중하고 있습니다.  
-        서울과 온라인을 오가며 빌더가 더 빠르게 만들 수 있는 환경을 고민합니다.
+        화려한 겉모습보다 내재된 본질에 집중합니다. 스타트업에서 백엔드 개발자로 일하고 있지만 단순히 기능 구현에 그치지 않고 마케팅 및 기획 등 비즈니스 전반에 관심을 가지며 아이디어를 제안합니다. 
+        직감보다는 데이터에 기반해 주어진 문제를 해결하며 개인의 성취보다 고객의 만족을 위해 끊임없이 고민하고 시도합니다. 
   - id: focus
     icon: "🛠️"
     heading:
