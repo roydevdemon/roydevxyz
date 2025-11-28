@@ -4,7 +4,7 @@ on:
     branches:
       - master
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
     timeout-minutes: 60
     steps:
@@ -27,11 +27,25 @@ jobs:
           npm run clean
           npm run build
 
-      - name: Deploy
-        id: deploy
-        uses: cloudflare/wrangler-action@v3
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy public --project-name=roydevxyz
-          wranglerVersion: '3.90.0'
+    deploy:
+      runs-on: ubuntu-latest
+      name: Deploy
+      steps:
+        - uses: actions/checkout@v4
+        - name: Deploy
+          uses: cloudflare/wrangler-action@v3
+          with:
+            apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+            workingDirectory: public
+
+  # deploy:
+  #   name: Deploy
+  #   steps:
+
+  #     - name: Deploy
+  #       uses: cloudflare/wrangler-action@v3
+  #       with:
+  #         apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+  #         accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+  #         command: pages deploy public --project-name=roydevxyz
+  #         wranglerVersion: '3.90.0'
