@@ -14,7 +14,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '22'
-          cache: 'npm'
+          cache: 'npm'     
 
       - name: Install Dependencies
         run: npm ci
@@ -27,8 +27,11 @@ jobs:
           npm run clean
           npm run build
 
+      - name: Install Wrangler
+        run: npm install -g wrangler@4
+
       - name: Deploy
-        uses: cloudflare/wrangler-action@v3
+        uses: cloudflare/wrangler-action@4
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           workingDirectory: public    
