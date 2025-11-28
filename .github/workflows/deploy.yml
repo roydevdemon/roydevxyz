@@ -27,16 +27,13 @@ jobs:
           npm run clean
           npm run build
 
-    deploy:
-      runs-on: ubuntu-latest
-      name: Deploy
-      steps:
-        - uses: actions/checkout@v4
-        - name: Deploy
-          uses: cloudflare/wrangler-action@v3
-          with:
-            apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-            workingDirectory: public
+      - name: Deploy
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          workingDirectory: public    
+
+        
 
   # deploy:
   #   name: Deploy
