@@ -8,6 +8,19 @@
   // ==========================================
 
   function initLanguageSwitcher() {
+    // Check if we're on a post or essays page
+    const isPostPage = document.querySelector('.post') !== null;
+    const isEssaysPage = window.location.pathname.includes('/essays');
+
+    // If on post or essays page, show all content and disable language switching
+    if (isPostPage || isEssaysPage) {
+      // Show all language content
+      document.querySelectorAll('.lang-content').forEach(function(element) {
+        element.style.display = 'block';
+      });
+      return; // Don't initialize language switcher
+    }
+
     // Detect browser language
     function detectBrowserLanguage() {
       const browserLang = navigator.language || navigator.userLanguage;
@@ -71,24 +84,74 @@
     const backToTop = document.createElement('button');
     backToTop.textContent = '👾';
     backToTop.className = 'back-to-top';
+
+    // Check for dark mode preference
+    const isDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+    const lightModeStyles = {
+      background: '#ffffff',
+      border: '2px solid #d4d4d4',
+      boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)'
+    };
+
+    const darkModeStyles = {
+      background: '#1a1f29',
+      border: '2px solid #2d3748',
+      boxShadow: '0 4px 12px rgba(0, 0, 0, 0.5)'
+    };
+
+    const currentStyles = isDarkMode ? darkModeStyles : lightModeStyles;
+
     backToTop.style.cssText = `
       position: fixed;
       bottom: 3rem;
       right: 1rem;
       width: 50px;
       height: 50px;
-      background: #0f1419;
-      color: white;
-      border: none;
+      background: ${currentStyles.background};
+      border: ${currentStyles.border};
+      box-shadow: ${currentStyles.boxShadow};
       border-radius: 50%;
       font-size: 24px;
       cursor: pointer;
       opacity: 0;
-      transition: opacity 0.3s ease;
+      transition: opacity 0.3s ease, transform 0.3s ease;
       z-index: 1000;
     `;
 
     document.body.appendChild(backToTop);
+
+    // Bounce animation on hover
+    backToTop.addEventListener('mouseenter', function() {
+      this.style.animation = 'bounce 0.6s ease';
+    });
+
+    backToTop.addEventListener('mouseleave', function() {
+      this.style.animation = '';
+    });
+
+    // Add bounce keyframes to document
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes bounce {
+        0%, 100% {
+          transform: translateY(0) scale(1);
+        }
+        25% {
+          transform: translateY(-10px) scale(1.05);
+        }
+        50% {
+          transform: translateY(0) scale(1);
+        }
+        75% {
+          transform: translateY(-5px) scale(1.02);
+        }
+      }
+      .back-to-top {
+        will-change: transform;
+      }
+    `;
+    document.head.appendChild(style);
 
     // Show/hide button based on scroll position
     window.addEventListener('scroll', function() {
@@ -106,6 +169,16 @@
         behavior: 'smooth'
       });
     });
+
+    // Update colors when color scheme changes
+    if (window.matchMedia) {
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+        const newStyles = e.matches ? darkModeStyles : lightModeStyles;
+        backToTop.style.background = newStyles.background;
+        backToTop.style.border = newStyles.border;
+        backToTop.style.boxShadow = newStyles.boxShadow;
+      });
+    }
   }
 
   // Initialize when DOM is ready

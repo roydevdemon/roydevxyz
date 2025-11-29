@@ -24,35 +24,31 @@
 
     <div class="terminal-line">
       <span class="prompt">$</span>
-      <span class="command"><a href="<%- url_for('/about') %>" style="color: var(--terminal-green); text-decoration: none;"><%= __('home.about_link') %></a></span>
+      <span class="command"><a href="<%- url_for('/about') %>" style="color: var(--terminal-green); text-decoration: none;">cat ~/About</a></span>
     </div>
 
-    <% var categories = site && site.categories ? site.categories.sort('name') : null; %>
-    <% if (categories && categories.length) { %>
+    <%
+    // Get all posts sorted by date (newest first) and limit to 5
+    var recentPosts = site.posts.sort('-date').limit(5);
+    %>
+    <% if (recentPosts && recentPosts.length) { %>
       <div class="terminal-line">
         <span class="prompt">$</span>
-        <span class="command"><%= __('home.ls_categories') %></span>
+        <span class="command">ls -lht ~/Essays | head -6 </span>
       </div>
       <div class="terminal-output">
         <div class="contents-grid">
-          <% categories.each(function(category) { %>
-            <% if (!category.length) { return; } %>
-            <a href="<%- url_for(category.path) %>" class="contents-card">
+          <% recentPosts.each(function(post) { %>
+            <a href="<%- url_for(post.path) %>" class="contents-card">
               <div class="contents-card__header">
-                <span class="contents-card__name"><%= category.name %></span>
-                <span class="contents-card__count"><%= category.length %> <%= __('home.posts_count') %></span>
+                <span class="contents-card__name"><%= post.title %></span>
+                <span class="contents-card__count"><%= date(post.date, 'YYYY-MM-DD') %></span>
               </div>
-              <div class="contents-card__path">/<%= category.path %></div>
             </a>
           <% }); %>
         </div>
       </div>
     <% } %>
-
-    <div class="terminal-line terminal-input-line">
-      <span class="prompt">$</span>
-      <input type="text" class="terminal-input" id="terminalInput" placeholder="" autocomplete="off" />
-    </div>
   </div>
 
   <% if (page.total > 1) { %>

@@ -1,5 +1,5 @@
 ---
-title: Seungjin (roy) Bang
+title: roy D.
 layout: about
 tagline:
   en: Builder, teacher, and unapologetic terminal nerd.
