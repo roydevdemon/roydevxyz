@@ -105,7 +105,7 @@
     backToTop.style.cssText = `
       position: fixed;
       bottom: 3rem;
-      right: 1rem;
+      right: calc(50% - 320px + 1rem);
       width: 50px;
       height: 50px;
       background: ${currentStyles.background};
