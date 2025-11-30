@@ -365,7 +365,6 @@ a:hover {
 .lang-content {
   display: none;
   animation: fadeIn 0.3s ease-in;
-  padding-top: 3rem;
 }
 
 .lang-content[data-lang="en"] {
