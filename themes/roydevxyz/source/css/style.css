@@ -1685,12 +1685,6 @@ a:hover {
   padding-left: 0;
 }
 
-.skill-item::before {
-  content: "- ";
-  color: var(--terminal-accent);
-  font-weight: bold;
-}
-
 /* Projects Section */
 .projects-list {
   display: flex;
@@ -1803,22 +1797,24 @@ a:hover {
 /* Contact Section */
 .contact-links {
   display: flex;
-  flex-direction: column;
-  gap: 8px;
+  flex-direction: row;
+  gap: 16px;
+  align-items: center;
 }
 
 .contact-link {
-  color: var(--terminal-accent);
-  font-size: 0.9rem;
-  font-weight: 400;
+  color: var(--terminal-text);
+  font-size: 20px;
   text-decoration: none;
-  transition: all 0.2s ease;
-  border-bottom: 1px dotted transparent;
+  transition: opacity 0.2s ease;
+  border-bottom: none;
 }
 
-.contact-link:hover {
-  color: var(--terminal-accent-hover);
-  border-bottom-color: var(--terminal-accent-hover);
+.contact-link:hover,
+.contact-link:visited {
+  color: var(--terminal-text);
+  border-bottom: none;
+  opacity: 0.7;
 }
 
 /* Responsive */

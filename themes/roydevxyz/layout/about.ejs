@@ -19,7 +19,7 @@
       <% if (page.skills && page.skills.length) { %>
         <section class="about-section">
           <h2 class="section-title">
-            <%= lang === 'ko' ? '기술' : 'Skills' %>
+           Skills
           </h2>
           <div class="skills-list">
             <% page.skills.forEach(function(skill) { %>
@@ -94,12 +94,28 @@
       <% if (page.contact && Object.keys(page.contact).length) { %>
         <section class="about-section">
           <h2 class="section-title">
-            <%= lang === 'ko' ? '연락처' : 'Contact' %>
+            Contacts
           </h2>
           <div class="contact-links">
+            <%
+              var iconMap = {
+                'email': 'fa-envelope',
+                'github': 'fa-github',
+                'twitter': 'fa-twitter',
+                'linkedin': 'fa-linkedin',
+                'instagram': 'fa-instagram',
+                'facebook': 'fa-facebook',
+                'youtube': 'fa-youtube',
+                'discord': 'fa-discord',
+                'telegram': 'fa-telegram',
+                'whatsapp': 'fa-whatsapp',
+                'phone': 'fa-phone',
+                'website': 'fa-globe'
+              };
+            %>
             <% for (var key in page.contact) { %>
-              <a href="<%= page.contact[key] %>" class="contact-link" target="_blank" rel="noopener">
-                <%= key %>
+              <a href="<%= page.contact[key] %>" class="contact-link" target="_blank" rel="noopener" title="<%= key %>">
+                <i class="fa-brands <%= iconMap[key.toLowerCase()] || 'fa-link' %>"></i>
               </a>
             <% } %>
           </div>
