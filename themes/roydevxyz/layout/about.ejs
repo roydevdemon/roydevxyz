@@ -8,17 +8,6 @@
 
   <% languages.forEach(function(lang, index) { %>
     <div class="lang-content" data-lang="<%= lang %>" <% if (index !== 0) { %>style="display:none;"<% } %>>
-      <header class="about-header">
-        <h1 class="about-title">
-          <%= typeof page.title === 'object' ? (page.title[lang] || page.title.en || page.title) : page.title %>
-        </h1>
-        <% if (page.subtitle) { %>
-          <p class="about-subtitle">
-            <%= typeof page.subtitle === 'object' ? (page.subtitle[lang] || page.subtitle.en || page.subtitle) : page.subtitle %>
-          </p>
-        <% } %>
-      </header>
-
       <div class="about-content">
         <% if (typeof page.content_i18n === 'object' && page.content_i18n[lang]) { %>
           <%- render_markdown(page.content_i18n[lang]) %>
@@ -32,42 +21,69 @@
           <h2 class="section-title">
             <%= lang === 'ko' ? '기술' : 'Skills' %>
           </h2>
-          <div class="skills-grid">
+          <div class="skills-list">
             <% page.skills.forEach(function(skill) { %>
-              <div class="skill-item">
-                <% if (skill.icon) { %>
-                  <span class="skill-icon"><%= skill.icon %></span>
+              <div class="skill-category">
+                <div class="skill-category-header">
+                  <% if (skill.icon) { %>
+                    <span class="skill-icon"><%= skill.icon %></span>
+                  <% } %>
+                  <h3 class="skill-category-name">
+                    <%= typeof skill.category === 'object' ? (skill.category[lang] || skill.category.en || skill.category) : skill.category %>
+                  </h3>
+                </div>
+                <% if (skill.items && skill.items.length) { %>
+                  <ul class="skill-items">
+                    <% skill.items.forEach(function(item) { %>
+                      <li class="skill-item"><%= item %></li>
+                    <% }); %>
+                  </ul>
                 <% } %>
-                <span class="skill-name">
-                  <%= typeof skill.name === 'object' ? (skill.name[lang] || skill.name.en || skill.name) : skill.name %>
-                </span>
               </div>
             <% }); %>
           </div>
         </section>
       <% } %>
 
-      <% if (page.experience && page.experience.length) { %>
+      <% if (page.projects && page.projects.length) { %>
         <section class="about-section">
           <h2 class="section-title">
-            <%= lang === 'ko' ? '경력' : 'Experience' %>
+            <%= lang === 'ko' ? '프로젝트' : 'Projects' %>
           </h2>
-          <div class="experience-list">
-            <% page.experience.forEach(function(exp) { %>
-              <div class="experience-item">
-                <div class="experience-header">
-                  <h3 class="experience-title">
-                    <%= typeof exp.title === 'object' ? (exp.title[lang] || exp.title.en || exp.title) : exp.title %>
+          <div class="projects-list">
+            <% page.projects.forEach(function(project) { %>
+              <div class="project-item">
+                <div class="project-header">
+                  <h3 class="project-name">
+                    <%= typeof project.name === 'object' ? (project.name[lang] || project.name.en || project.name) : project.name %>
                   </h3>
-                  <span class="experience-period"><%= exp.period %></span>
+                  <% if (project.date) { %>
+                    <span class="project-date"><%= project.date %></span>
+                  <% } %>
                 </div>
-                <p class="experience-company">
-                  <%= typeof exp.company === 'object' ? (exp.company[lang] || exp.company.en || exp.company) : exp.company %>
-                </p>
-                <% if (exp.description) { %>
-                  <p class="experience-description">
-                    <%= typeof exp.description === 'object' ? (exp.description[lang] || exp.description.en || exp.description) : exp.description %>
+                <% if (project.type) { %>
+                  <p class="project-type">
+                    <%= typeof project.type === 'object' ? (project.type[lang] || project.type.en || project.type) : project.type %>
                   </p>
+                <% } %>
+                <% if (project.description) { %>
+                  <p class="project-description">
+                    <%= typeof project.description === 'object' ? (project.description[lang] || project.description.en || project.description) : project.description %>
+                  </p>
+                <% } %>
+                <% if (project.github || project.website) { %>
+                  <div class="project-links">
+                    <% if (project.github) { %>
+                      <a href="<%= project.github %>" class="project-link" target="_blank" rel="noopener">
+                        GitHub
+                      </a>
+                    <% } %>
+                    <% if (project.website) { %>
+                      <a href="<%= project.website %>" class="project-link" target="_blank" rel="noopener">
+                        Website
+                      </a>
+                    <% } %>
+                  </div>
                 <% } %>
               </div>
             <% }); %>

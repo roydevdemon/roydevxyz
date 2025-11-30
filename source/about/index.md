@@ -5,56 +5,66 @@ subtitle:
   ko: 백엔드 개발자 & 스타트업 열정가
 layout: about
 skills:
-  - name:
-      en: Backend Development
-      ko: 백엔드 개발
+  - category:
+      en: Backend
+      ko: 백엔드
     icon: 💻
-  - name:
+    items:
+      - Node.js
+      - Spring
+      - MySQL
+  - category:
       en: AI & ML
       ko: AI & ML
     icon: 🤖
-  - name:
+    items:
+      - TensorFlow
+      - PyTorch
+      - Scikit-learn
+  - category:
       en: Blockchain
       ko: 블록체인
     icon: ⛓️
-  - name:
-      en: Cloud Infrastructure
-      ko: 클라우드 인프라
+    items:
+      - Ethereum
+      - Solidity
+      - Web3.js
+  - category:
+      en: Cloud
+      ko: 클라우드
     icon: ☁️
+    items:
+      - AWS
+      - Docker
+      - Kubernetes
+projects:
   - name:
-      en: Data Analysis
-      ko: 데이터 분석
-    icon: 📊
+      en: Project Name 1
+      ko: 프로젝트명 1
+    date: 2024
+    type:
+      en: Web Application
+      ko: 웹 애플리케이션
+    description:
+      en: Description of your project
+      ko: 프로젝트 설명
+    github: https://github.com/yourusername/project1
+    website: https://project1.com
   - name:
-      en: System Design
-      ko: 시스템 설계
-    icon: 🏗️
-experience:
-  - title:
-      en: Backend Developer
-      ko: 백엔드 개발자
-    company:
-      en: Startup Company
-      ko: 스타트업
-    period: 2023 - Present
+      en: Project Name 2
+      ko: 프로젝트명 2
+    date: 2023
+    type:
+      en: Mobile App
+      ko: 모바일 앱
     description:
-      en: Leading backend development and contributing to business strategy including marketing and planning. Solving problems with data-driven approaches and focusing on customer satisfaction.
-      ko: 백엔드 개발을 리드하며 마케팅 및 기획을 포함한 비즈니스 전략에 기여합니다. 데이터 기반 접근으로 문제를 해결하고 고객 만족에 집중합니다.
-  - title:
-      en: Previous Role
-      ko: 이전 경력
-    company:
-      en: Previous Company
-      ko: 이전 회사
-    period: 2020 - 2023
-    description:
-      en: Description of your previous work experience.
-      ko: 이전 경력에 대한 설명입니다.
+      en: Another project description
+      ko: 또 다른 프로젝트 설명
 contact:
-  Email: mailto:hello@roydev.xyz
   GitHub: https://github.com/roydevdemon
-  Twitter: https://twitter.com/roydevdemon
   LinkedIn: https://linkedin.com/in/roydevdive
+  X(Twitter): https://x.com/roydevdemon
+  Youtube: https://youtube.com/@roydevdemon
 content_i18n:
   en: |
     ## Hello, I'm Roy 👋
