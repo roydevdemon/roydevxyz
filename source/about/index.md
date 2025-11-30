@@ -87,7 +87,7 @@ content_i18n:
     - Automation Workflows and Robotic Process Automation (RPA)
 
   ko: |
-    ## 고객 지향적 제품을 추구하는 , roy입니다 👋
+    ## 반갑습니다 roy입니다. 👋
 
     자신의 소신이 있지만 항상 겸손한 태도로 살자는 의미에서 소문자로 이름을 표기합니다.
 
