@@ -45,7 +45,7 @@ skills:
     items:
       - LLMs (GPT, Claude, Gemini, Grok, etc / use API)
       - Zapier, Make
-# projects:
+# projects: // TBD 
 #   - name:
 #       en: DITO.GURU
 #       ko: DITO.GURU
@@ -68,7 +68,13 @@ content_i18n:
   en: |
     ## Hello, I'm roy 👋
 
-    I'm a backend developer working at a startup, but my role extends beyond simple feature implementation. I proactively engage with the business as a whole—including marketing and planning—to propose valuable ideas.
+    I choose to use lowercase for my name as a personal commitment to always maintain a humble attitude.
+
+    I'm a Backend Developer, and depending on the situation, I also handle Frontend development, service planning, and operations. Before becoming a developer, I worked in Sales. Thanks to this background, I have concrete experience launching and operating services at three early-stage startups.
+
+    I work under the firm belief that products and outcomes are created solely based on human needs. I enjoy taking on new challenges to solve customer needs based on this conviction.
+
+    I spend time exercising more than four days a week and reading for one day a week.
 
     ## Strengths
 
@@ -91,12 +97,19 @@ content_i18n:
 
   ko: |
     ## 반갑습니다 roy입니다. 👋
+    
+    항상 겸손한 자세를 유지하겠다는 다짐으로 소문자로 이름을 표기합니다.
 
-    자신의 소신이 있지만 항상 겸손한 태도로 살자는 의미에서 소문자로 이름을 표기합니다.
+    백엔드 개발자이며 상황에 따라 프론트엔드 개발이나 서비스 기획, 운영 일을 하기도 합니다. 개발자 이전에는 영업직으로 일했습니다. 덕분에 3곳의 초기 스타트업에서 서비스를 런칭하고 운영한 경험이 있습니다. 
+    
+    제품과 결과물은 오직 사람의 필요에 따라 만들어진다는 확고한 신념 하에 일합니다. 이 신념을 바탕으로 고객의 니즈를 해결하는 새로운 도전에 뛰어드는 것을 좋아합니다. 
+
+    주에 4일 이상 운동하고 일주일에 하루는 독서를 하는 데 시간을 보냅니다. 
+    
 
     ## Strengths
     - **빠른 회복력**: 실패에 쉽게 좌절하지 않고 다시 도전하는 회복성과 멘탈을 가지고 있습니다. 
-    - **빠른 도메인 이해**: 도메인 이해가 빠르며, VOC 및 비즈니스 로직을 현실성 있게 기획하고 반영합니다. 
+    - **빠른 도메인 이해**: 도메인 이해가 빠르며, VOC 및 비즈니스 로직을 현실성 있게 기획하고 반영합니다.  
 
     ## Core Values
 
