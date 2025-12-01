@@ -61,6 +61,7 @@ skills:
 contact:
   GitHub: https://github.com/roydevdemon
   LinkedIn: https://linkedin.com/in/roydevdive
+  X: https://x.com/roydevdemon
   Youtube: https://youtube.com/@roydevdemon
 content_i18n:
   en: |
@@ -70,7 +71,8 @@ content_i18n:
 
     ## Strengths
 
-    I focus on **substance over style**. I solve problems based on data, not intuition, and continuously strive for customer satisfaction and team success rather than personal achievement.
+    - **Rapid Resilience**: I possess the resilience and mental strength to immediately rebound and challenge again without being easily discouraged by setbacks.
+    - **Quick Domain Comprehension**: I'm quick to understand new domains, allowing me to realistically plan and integrate VOC (Voice of Customer) and business logic.
 
     ## Core Values
 
@@ -92,7 +94,8 @@ content_i18n:
     자신의 소신이 있지만 항상 겸손한 태도로 살자는 의미에서 소문자로 이름을 표기합니다.
 
     ## Strengths
-    저는 **화려한 겉모습보다 본질**에 집중합니다. 직감보다는 데이터에 기반해 문제를 해결하며, 개인의 성취보다 고객 만족과 팀의 성공을 위해 끊임없이 노력합니다.
+    - **빠른 회복력**: 실패에 쉽게 좌절하지 않고 다시 도전하는 회복성과 멘탈을 가지고 있습니다. 
+    - **빠른 도메인 이해**: 도메인 이해가 빠르며, VOC 및 비즈니스 로직을 현실성 있게 기획하고 반영합니다. 
 
     ## Core Values
 

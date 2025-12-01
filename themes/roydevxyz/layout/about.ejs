@@ -98,25 +98,20 @@
           </h2>
           <div class="contact-links">
             <%
-              var iconMap = {
-                'email': 'fa-envelope',
-                'github': 'fa-github',
-                'twitter': 'fa-twitter',
-                'linkedin': 'fa-linkedin',
-                'instagram': 'fa-instagram',
-                'facebook': 'fa-facebook',
-                'youtube': 'fa-youtube',
-                'discord': 'fa-discord',
-                'telegram': 'fa-telegram',
-                'whatsapp': 'fa-whatsapp',
-                'phone': 'fa-phone',
-                'website': 'fa-globe'
+              var imageMap = {
+                'github': 'github.png',
+                'linkedin': 'linkedin.png',
+                'x': 'x.png',
+                'youtube': 'youtube.png'
               };
             %>
             <% for (var key in page.contact) { %>
-              <a href="<%= page.contact[key] %>" class="contact-link" target="_blank" rel="noopener" title="<%= key %>">
-                <i class="fa-brands <%= iconMap[key.toLowerCase()] || 'fa-link' %>"></i>
-              </a>
+              <% var imageName = imageMap[key.toLowerCase()]; %>
+              <% if (imageName) { %>
+                <a href="<%= page.contact[key] %>" class="contact-link" target="_blank" rel="noopener" title="<%= key %>">
+                  <img src="<%- url_for('/contacts/' + imageName) %>" alt="<%= key %>" class="contact-icon">
+                </a>
+              <% } %>
             <% } %>
           </div>
         </section>
