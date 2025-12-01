@@ -1,22 +1,22 @@
 ---
-title: 2025년을 정리하며
+title: 2025.history
 date: 2025-12-01 23:00:00
 tags:
   - 2025
-  - Reflection
+  - history
 categories:
-  - Reflection
+  - history
 ---
 
 <div class="lang-content">
 
-Welcome to [Hexo](https://hexo.io/)! This is your very first post. Check [documentation](https://hexo.io/docs/) for more info. If you get any problems when using Hexo, you can find the answer in [troubleshooting](https://hexo.io/docs/troubleshooting.html) or you can ask me on [GitHub](https://github.com/hexojs/hexo/issues).
+<!-- Welcome to [Hexo](https://hexo.io/)! This is your very first post. Check [documentation](https://hexo.io/docs/) for more info. If you get any problems when using Hexo, you can find the answer in [troubleshooting](https://hexo.io/docs/troubleshooting.html) or you can ask me on [GitHub](https://github.com/hexojs/hexo/issues).
 
 ## Quick Start
 
-### Create a new post
+### Create a new post -->
 
-``` bash
+<!-- ``` bash
 $ hexo new "My New Post"
 ```
 
@@ -50,6 +50,6 @@ More info: [Deployment](https://hexo.io/docs/one-command-deployment.html)
 
 ## Multilingual Support
 
-This blog now supports both English and Korean! You can switch languages using the language buttons (EN / KO) in the header. The content will automatically change based on your selection.
+This blog now supports both English and Korean! You can switch languages using the language buttons (EN / KO) in the header. The content will automatically change based on your selection. -->
 
 </div>
