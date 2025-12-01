@@ -61,6 +61,7 @@ skills:
 contact:
   GitHub: https://github.com/roydevdemon
   LinkedIn: https://linkedin.com/in/roydevdive
+  Instagram: https://instagram.com/roydevdemon
   X: https://x.com/roydevdemon
   Youtube: https://youtube.com/@roydevdemon
 content_i18n:
