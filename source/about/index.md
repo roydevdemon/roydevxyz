@@ -81,10 +81,10 @@ content_i18n:
 
     ## Interests
 
-    - Content Production and Industry Expertise  
-    - AI Model Integration and Orchestration  
-    - Blockchain Technology and Token Economics  
-    - Automation Workflows and Robotic Process Automation (RPA)
+    - **IP Content Industry**: I'm interested in business models that discover and expand global Intellectual Property (IP).
+    - **AI and Orchestration**: I contemplate integrated methods (Agent Orchestration) for effectively using AI in professional work.
+    - **Blockchain and Tokenomics**: I'm interested in the potential of Distributed Ledger Technology (DLT) and sustainable token economy design.
+    - **RPA**: I research ways to utilize RPA and automation tools to minimize repetitive tasks and maximize efficiency.
 
   ko: |
     ## 반갑습니다 roy입니다. 👋
@@ -104,8 +104,8 @@ content_i18n:
 
     ## Interests
 
-    - 컨텐츠 산업 및 생산
-    - AI 모델 통합 및 활용
-    - 블록체인 기술 및 토크노믹스
-    - 자동화 워크플로우 및 RPA
+    - **IP 콘텐츠 산업**: 세계적인 지적재산(IP)을 발굴하고 확장하는 비즈니스 모델에 대해 관심이 있습니다. 
+    - **AI와 오케스트레이션**: AI를 업무에 효과적으로 사용하기 위한 통합 방법을 고민합니다.
+    - **블록체인과 토크노믹스**: 분산 원장 기술의 가능성과 지속 가능한 토큰경제에 관심이 있습니다. 
+    - **RPA**: 반복 업무를 최소화하고 효율성을 극대화하기 위한 RPA 및 자동화 도구 활용 방안을 연구합니다.
 ---
