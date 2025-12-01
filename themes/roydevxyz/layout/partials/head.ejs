@@ -19,14 +19,15 @@
   <meta name="author" content="<%= config.author %>">
 
   <!-- Open Graph Tags -->
+  <meta property="og:site_name" content="roydev.xyz">
+  <meta property="og:image" content="<%= config.url %>/og/1200x630.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
   <% if (is_post()) { %>
-    <meta property="og:site_name" content="roydev.xyz">
     <meta property="og:type" content="article">
     <meta property="og:title" content="<%= page.title %>">
     <meta property="og:url" content="<%= config.url %>/<%= page.path %>">
-    <meta property="og:image" content="<%= config.url %>/og/1200x630.png">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
     <%
       // Extract text content from lang-content div
       let ogDescription = '';
@@ -48,6 +49,10 @@
     <% if (ogDescription) { %>
     <meta property="og:description" content="<%= ogDescription %>">
     <% } %>
+  <% } else { %>
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="roydev.xyz">
+    <meta property="og:url" content="<%= config.url %>/<%= page.path %>">
   <% } %>
 
   <!-- Web Fonts -->
