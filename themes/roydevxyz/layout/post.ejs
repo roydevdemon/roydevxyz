@@ -3,11 +3,8 @@
     <h1 class="post-title"><%= page.title %></h1>
     <div class="post-meta">
       <time datetime="<%= date_xml(page.date) %>">
-        <%= date(page.date, 'YYYY-MM-DD HH:mm') %>
+        <%= date(page.date, 'YYYY-MM-DD') %>
       </time>
-      <% if (page.author) { %>
-        <span class="post-author">by <%= page.author %></span>
-      <% } %>
     </div>
   </header>
 

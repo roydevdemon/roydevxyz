@@ -852,7 +852,7 @@ a:hover {
   max-width: 1200px;
   margin: 0 auto;
   background: transparent;
-  padding: 40px 0;
+  padding: 60px 0;
   border: none;
 }
 
@@ -863,10 +863,10 @@ a:hover {
   border-bottom: 1px solid var(--terminal-border);
 }
 
+
 .post-title,
 .page-title {
   font-size: 1.8rem;
-  margin-bottom: 12px;
   color: var(--terminal-text);
   display: block;
   font-weight: 600;
@@ -877,7 +877,8 @@ a:hover {
   font-size: 0.9rem;
   display: flex;
   gap: 15px;
-  align-items: center;
+  align-items: flex-end;
+  justify-content: flex-end;
 }
 
 .post-author {
