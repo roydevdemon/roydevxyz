@@ -3,7 +3,7 @@
 # Menu
 menu:
   Home: /
-  Essays: /essays
+  # Essays: /essays
   About: /about
 
 # Sidebar
