@@ -1,50 +1,16 @@
 menu:
-  home: 홈
-  categories: 카테고리
-  essays: Essays
-  about: 소개
-  archives: 아카이브
-
-navigation:
-  close: 닫고 돌아가기
-  bookmark: 북마크에 추가
-
-sidebar:
-  category: 카테고리
-  tag: 태그
-  archive: 아카이브
-  recent_posts: 최근 포스트
+  hero: Hero
+  article: Article
+  villain: Villain
 
 post:
   posted: 게시일
   updated: 수정일
-  read_more: 더 읽기
-  toc: 목차
 
 pagination:
   prev: 이전
   next: 다음
 
-footer:
-  powered: "%s 기반"
-  theme: "테마"
-
 language:
   name: 한국어
   code: ko
-
-about:
-  links: 링크
-
-home:
-  whoami: 나는누구
-  cat_profile: 프로필보기 ~/profile.txt
-  profile_header: "roydev.xyz에 오신 것을 환영합니다"
-  profile_description: "roydev.xyz는 AI, 블록체인, 콘텐츠, 문화, 밈 등에 관한 블로그입니다."
-  about_link: 소개페이지 ~/about && 읽기 README.md
-  ls_categories: 카테고리목록 ~/categories/
-  posts_count: 포스트
-
-terminal:
-  help_message: "사용 가능한 명령어:\n- help: 도움말 보기\n- clear: 입력 지우기\n- about: 소개 페이지로 이동\n- home: 홈으로 이동\n- categories: 카테고리 보기"
-  command_not_found: "명령어를 찾을 수 없습니다: {command}\n'help'를 입력하여 사용 가능한 명령어를 확인하세요."

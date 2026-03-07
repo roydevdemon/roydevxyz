@@ -2,33 +2,10 @@
 
 # Menu
 menu:
-  Home: /
-  # Essays: /essays
-  About: /about
-
-# Sidebar
-sidebar: left
-
-# Widgets
-widgets:
-  - category
-  - tag
-  - archive
-  - recent_posts
-
-# Social Links
-social:
-  GitHub: https://github.com/roydevdemon
-  LinkedIn: https://linkedin.com/in/roydevdive
-  X(Twitter): https://twitter.com/roydevdemon
-  YouTube: https://youtube.com/@roydevdemon
+  Hero: /
+  Article: /article
+  Villain: /villain
 
 # Miscellaneous
 favicon: /favicon.ico
-google_analytics: G-Z80C5T1NEQ  # Replace with your GA4 Measurement ID
-
-# Deployment 
-deploy:
-  type: git
-  repo: https://github.com/roydevdemon/roydevxyz.git
-  branch: master
+google_analytics: G-Z80C5T1NEQ

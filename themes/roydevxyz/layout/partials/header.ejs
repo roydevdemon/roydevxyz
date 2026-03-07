@@ -1,21 +1,17 @@
 <header class="site-header">
-  <!-- Mac Menu Bar Style -->
-  <nav class="mac-menubar">
-    <div class="menubar-container">
-      <!-- Left: Logo/Site Name -->
-      <div class="menubar-left">
-        <!-- Menu Items -->
-        <div class="menu-items">
-          <% for (var name in theme.menu) { %>
-            <a href="<%- url_for(theme.menu[name]) %>" class="menu-item">
-              <%= __('menu.' + name.toLowerCase()) || name %>
-            </a>
-          <% } %>
-        </div>
+  <nav class="nav">
+    <div class="nav-container">
+      <div class="nav-left">
+        <% for (var name in theme.menu) {
+          var menuPath = theme.menu[name];
+          var isActive = (menuPath === '/' && is_home()) || (menuPath !== '/' && path.indexOf(menuPath.replace(/^\//, '')) === 0);
+        %>
+          <a href="<%- url_for(menuPath) %>" class="nav-link<%= isActive ? ' active' : '' %>">
+            <%= __('menu.' + name.toLowerCase()) || name %>
+          </a>
+        <% } %>
       </div>
-
-      <!-- Right: Status Icons & Language Switcher -->
-      <div class="menubar-right">
+      <div class="nav-right">
         <div class="language-switcher">
           <%
           var languages = config.language || ['en', 'ko'];
@@ -23,31 +19,15 @@
             languages = [languages];
           }
           %>
-
-          <% languages.forEach(function(lang) { %>
+          <%
+          var langLabels = { en: 'English', ko: '한국어' };
+          languages.forEach(function(lang) { %>
             <a href="#" class="lang-link" data-lang="<%= lang %>">
-              <%= lang.toUpperCase() %>
+              <%= langLabels[lang] || lang.toUpperCase() %>
             </a>
           <% }); %>
-        </div>
-        <div class="menu-status">
-          <span class="status-icon">◉</span>
         </div>
       </div>
     </div>
   </nav>
-
-  <!-- Terminal Window Title Bar -->
-  <div class="terminal-titlebar">
-    <div class="terminal-buttons">
-      <% if (is_home()) { %>
-        <span class="terminal-button close" onclick="window.close();" style="cursor: pointer;" title="<%= __('navigation.close') %>"></span>
-      <% } else { %>
-        <span class="terminal-button close" onclick="window.history.back();" style="cursor: pointer;" title="<%= __('navigation.close') %>"></span>
-      <% } %>
-      <span class="terminal-button minimize"></span>
-      <span class="terminal-button maximize"></span>
-    </div>
-    <span class="terminal-title"><%= config.title %> — terminal</span>
-  </div>
 </header>

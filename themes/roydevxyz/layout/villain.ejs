@@ -1,0 +1,85 @@
+<article class="page villain-page">
+  <%
+    var languages = config.language || ['en'];
+    if (typeof languages === 'string') {
+      languages = [languages];
+    }
+    var iconMap = {
+      'github': 'fa-brands fa-github',
+      'linkedin': 'fa-brands fa-linkedin',
+      'instagram': 'fa-brands fa-instagram',
+      'x': 'fa-brands fa-x-twitter'
+    };
+  %>
+
+  <% languages.forEach(function(lang, index) { %>
+    <div class="lang-content" data-lang="<%= lang %>" <% if (index !== 0) { %>style="display:none;"<% } %>>
+
+      <%/* Core Values */%>
+      <% if (page.core_values_i18n && page.core_values_i18n[lang]) { %>
+        <section class="villain-section">
+          <h2 class="villain-section-title">Villain's Core Values</h2>
+          <div class="villain-interests">
+            <% page.core_values_i18n[lang].forEach(function(item) { %>
+              <div class="villain-interest">
+                <h3 class="villain-interest-name"><%= item.name %></h3>
+                <p class="villain-interest-desc"><%= item.desc %></p>
+              </div>
+            <% }); %>
+          </div>
+        </section>
+      <% } %>
+
+      <%/* Interests */%>
+      <% if (page.interests_i18n && page.interests_i18n[lang]) { %>
+        <section class="villain-section">
+          <h2 class="villain-section-title">Villain's Interests</h2>
+          <div class="villain-interests">
+            <% page.interests_i18n[lang].forEach(function(item) { %>
+              <div class="villain-interest">
+                <h3 class="villain-interest-name"><%= item.name %></h3>
+                <p class="villain-interest-desc"><%= item.desc %></p>
+              </div>
+            <% }); %>
+          </div>
+        </section>
+      <% } %>
+
+      <%/* Careers */%>
+      <% if (page.careers && page.careers.length) { %>
+        <section class="villain-section">
+          <h2 class="villain-section-title">Careers</h2>
+          <div class="villain-careers">
+            <% page.careers.forEach(function(career) { %>
+              <div class="villain-career">
+                <div class="villain-career-left">
+                  <span class="villain-career-company"><%= career.company %></span>
+                  <span class="villain-career-role"><%= typeof career.role_i18n === 'object' ? (career.role_i18n[lang] || career.role_i18n.en) : career.role_i18n %></span>
+                </div>
+                <span class="villain-career-period"><%= career.period %></span>
+              </div>
+            <% }); %>
+          </div>
+        </section>
+      <% } %>
+
+      <%/* Contacts */%>
+      <% if (page.contact && Object.keys(page.contact).length) { %>
+        <section class="villain-section">
+          <h2 class="villain-section-title">Contacts</h2>
+          <div class="contact-links">
+            <% for (var key in page.contact) { %>
+              <% var iconClass = iconMap[key.toLowerCase()]; %>
+              <% if (iconClass) { %>
+                <a href="<%= page.contact[key] %>" class="contact-link" target="_blank" rel="noopener" title="<%= key %>">
+                  <i class="<%= iconClass %>"></i>
+                </a>
+              <% } %>
+            <% } %>
+          </div>
+        </section>
+      <% } %>
+
+    </div>
+  <% }); %>
+</article>

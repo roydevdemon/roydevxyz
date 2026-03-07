@@ -1,63 +1,38 @@
-<div class="terminal-home">
-  <!-- Terminal Welcome Screen -->
-  <div class="terminal-session">
-    <div class="terminal-line">
-      <span class="prompt">$</span>
-      <span class="command"><%= __('home.whoami') %></span>
-    </div>
-    <div class="terminal-output profile-box">
-      <div class="profile-header">
-        <img src="<%- url_for('/persona.png') %>" alt="<%= __('home.profile_header') %>" class="profile-header-image">
-      </div>
-      <div class="profile-description lang-content" data-lang="en">
-        <h2>Make fantasy a reality</h2>
-        I'm a Product-minded Builder dedicated to transforming imagination into reality.<br/>
-        Unafraid of new challenges, I focus on solving problems with a strictly objective perspective, setting aside prejudice regarding age, gender, or background.<br/>
-        I always approach the core essence through the 'Why,' not the 'What,' and honestly express my own thoughts.
-      </div>
-      <div class="profile-description lang-content" data-lang="ko">
-        <h2>Make fantasy a reality</h2>
-        상상을 현실로 만드는 것에 몰두하는 프로덕트 빌더입니다.<br/>
-        새로운 도전을 두려워하지 않으며, 나이, 성별, 성향 등 그 어떤 편견을 배제하고 오직 객관적인 시선으로 문제를 해결하는 데 집중합니다.<br/>
-        항상 '무엇(What)'이 아닌 '왜(Why)'를 통해 본질에 접근하며 저만의 생각을 솔직하게 표현합니다.
-      </div>
-    </div>
-
-    <!-- <div class="terminal-line">
-      <span class="prompt">$</span>
-      <span class="command"><a href="<%- url_for('/about') %>" style="color: var(--terminal-green); text-decoration: none;">cat ~/About</a></span>
-    </div>
-
-    <%
-    // Get all posts sorted by date (newest first) and limit to 5
-    var recentPosts = site.posts.sort('-date').limit(5);
-    %>
-    <% if (recentPosts && recentPosts.length) { %>
-      <div class="terminal-line">
-        <span class="prompt">$</span>
-        <span class="command">ls -lht ~/Essays | head -6 </span>
-      </div>
-      <div class="terminal-output">
-        <div class="contents-grid">
-          <% recentPosts.each(function(post) { %>
-            <a href="<%- url_for(post.path) %>" class="contents-card">
-              <div class="contents-card__header">
-                <span class="contents-card__name"><%= post.title %></span>
-                <span class="contents-card__count"><%= date(post.date, 'YYYY-MM-DD') %></span>
-              </div>
-            </a>
-          <% }); %>
-        </div>
-      </div>
-    <% } %> -->
+<div class="hero">
+  <div class="hero-profile">
+    <img src="<%- url_for('/persona.png') %>" alt="<%= __('home.profile_header') %>" class="hero-image">
+  </div>
+  <div class="hero-description lang-content" data-lang="en">
+    <h1>Make fantasy a reality</h1>
+    <p>
+      I'm a Product-minded Builder dedicated to transforming imagination into reality.<br/>
+      Unafraid of new challenges, I focus on solving problems with a strictly objective perspective, setting aside prejudice regarding age, gender, or background.<br/>
+      I always approach the core essence through the 'Why,' not the 'What,' and honestly express my own thoughts.
+    </p>
+  </div>
+  <div class="hero-description lang-content" data-lang="ko">
+    <h1>Make fantasy a reality</h1>
+    <p>
+      상상을 현실로 만드는 것에 몰두하는 프로덕트 빌더입니다.<br/>
+      새로운 도전을 두려워하지 않으며, 나이, 성별, 성향 등 그 어떤 편견을 배제하고 오직 객관적인 시선으로 문제를 해결하는 데 집중합니다.<br/>
+      항상 '무엇(What)'이 아닌 '왜(Why)'를 통해 본질에 접근하며 저만의 생각을 솔직하게 표현합니다.
+    </p>
   </div>
 
-  <% if (page.total > 1) { %>
-    <nav class="terminal-pagination">
-      <%- paginator({
-        prev_text: '← prev',
-        next_text: 'next →'
-      }) %>
-    </nav>
+  <% var recentPosts = site.posts.sort('-date').limit(5); %>
+  <% if (recentPosts && recentPosts.length) { %>
+    <section class="hero-recent">
+      <ul class="hero-recent-list">
+        <% recentPosts.each(function(post) { %>
+          <li class="hero-recent-item">
+            <a href="<%- url_for(post.path) %>">
+              <span class="hero-recent-title"><%= post.title %></span>
+              <span class="hero-recent-date"><%= date(post.date, 'YYYY.MM.DD') %></span>
+            </a>
+          </li>
+        <% }); %>
+      </ul>
+      <a href="<%- url_for('/article') %>" class="hero-recent-more">More &rarr;</a>
+    </section>
   <% } %>
 </div>

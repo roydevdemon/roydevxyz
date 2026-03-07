@@ -1,0 +1,92 @@
+<div class="article-page">
+  <%
+    var allPosts = site.posts.sort('-date');
+    var featuredPost = allPosts.length ? allPosts.data[0] : null;
+    var otherPosts = allPosts.length > 1 ? allPosts.data.slice(1) : [];
+  %>
+
+  <% if (featuredPost) { %>
+    <section class="article-featured">
+      <a href="<%- url_for(featuredPost.path) %>" class="article-featured-link">
+        <% if (featuredPost.cover) { %>
+          <div class="article-featured-image">
+            <img src="<%- url_for(featuredPost.cover) %>" alt="<%= featuredPost.title %>">
+          </div>
+        <% } %>
+        <div class="article-featured-body">
+          <h2 class="article-featured-title"><%= featuredPost.title %></h2>
+          <time class="article-featured-date"><%= date(featuredPost.date, 'YYYY.MM.DD') %></time>
+          <% if (featuredPost.excerpt) { %>
+            <p class="article-featured-excerpt"><%- strip_html(featuredPost.excerpt).substring(0, 200) %></p>
+          <% } %>
+        </div>
+      </a>
+    </section>
+  <% } %>
+
+  <div id="articleList"></div>
+  <div class="article-pagination" id="articlePagination"></div>
+
+  <% if (!allPosts.length) { %>
+    <div class="article-empty">
+      <p>No articles yet.</p>
+    </div>
+  <% } %>
+
+  <% if (otherPosts.length) { %>
+  <script>
+  (function() {
+    var posts = [<% otherPosts.forEach(function(post, i) { %>{t:<%- JSON.stringify(post.title) %>,p:<%- JSON.stringify(url_for(post.path)) %>,m:<%- JSON.stringify(date(post.date, 'YYYY.MM')) %>,d:<%- JSON.stringify(date(post.date, 'MM.DD')) %>}<%= i < otherPosts.length - 1 ? ',' : '' %><% }); %>];
+
+    var perPage = 20;
+    var currentPage = 0;
+    var totalPages = Math.ceil(posts.length / perPage);
+    var list = document.getElementById('articleList');
+    var pagination = document.getElementById('articlePagination');
+
+    function render(page) {
+      currentPage = page;
+      var start = page * perPage;
+      var slice = posts.slice(start, start + perPage);
+
+      var grouped = {};
+      slice.forEach(function(p) {
+        if (!grouped[p.m]) grouped[p.m] = [];
+        grouped[p.m].push(p);
+      });
+
+      var keys = Object.keys(grouped).sort().reverse();
+      var html = '<section class="article-list">';
+      keys.forEach(function(key) {
+        html += '<div class="article-group"><h3 class="article-group-label">' + key + '</h3><ul class="article-group-items">';
+        grouped[key].forEach(function(p) {
+          html += '<li class="article-item"><a href="' + p.p + '"><span class="article-item-title">' + p.t + '</span><span class="article-item-date">' + p.d + '</span></a></li>';
+        });
+        html += '</ul></div>';
+      });
+      html += '</section>';
+      list.innerHTML = html;
+
+      // Pagination
+      var pHtml = '';
+      if (totalPages > 1) {
+        if (currentPage > 0) {
+          pHtml += '<a href="#" class="article-page-btn" id="prevBtn">&larr; Prev</a>';
+        }
+        if (currentPage < totalPages - 1) {
+          pHtml += '<a href="#" class="article-page-btn" id="nextBtn">Next &rarr;</a>';
+        }
+      }
+      pagination.innerHTML = pHtml;
+
+      var prev = document.getElementById('prevBtn');
+      var next = document.getElementById('nextBtn');
+      if (prev) prev.addEventListener('click', function(e) { e.preventDefault(); render(currentPage - 1); window.scrollTo({top: 0}); });
+      if (next) next.addEventListener('click', function(e) { e.preventDefault(); render(currentPage + 1); window.scrollTo({top: 0}); });
+    }
+
+    render(0);
+  })();
+  </script>
+  <% } %>
+</div>

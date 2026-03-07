@@ -3,8 +3,8 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: roydev.xyz
-subtitle: 'roy, the devdemon'
+title: 'roydev.xyz | For the essence — villain, not hero'
+subtitle: 'For the essence — villain, not hero'
 description: roydev.xyz is a blog about AI, Blockchain, Contents, Culture, Meme and more.
 keywords: AI, Blockchain, Contents, Culture, Meme
 author: Roy D.
@@ -43,7 +43,7 @@ external_link:
   exclude: ''
 filename_case: 0
 render_drafts: false
-post_asset_folder: false
+post_asset_folder: true
 relative_link: false
 future: true
 syntax_highlighter: highlight.js
@@ -100,6 +100,17 @@ ignore:
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
 theme: roydevxyz
+
+# Sitemap
+sitemap:
+  path: sitemap.xml
+  rel: true
+
+# RSS Feed
+feed:
+  type: atom
+  path: atom.xml
+  limit: 20
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
